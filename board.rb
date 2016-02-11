@@ -2,10 +2,11 @@ require_relative './tile.rb'
 
 class Board
 
-  attr_accessor :grid
+  attr_accessor :grid, :bomb_positions
 
   def initialize
     @grid = Array.new(9) { Array.new(9) {Tile.new} }
+    @bomb_positions = []
   end
 
   def [](pos)
@@ -26,6 +27,7 @@ class Board
   def place_bombs
       bomb_count = 0
 
+
       until bomb_count == 10
         x = rand(9)
         y = rand(9)
@@ -33,6 +35,7 @@ class Board
         unless @grid[x][y].bomb == true
           @grid[x][y].bomb = true
           bomb_count += 1
+          @bomb_positions << [x, y]
         end
       end
 
