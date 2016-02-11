@@ -1,13 +1,36 @@
-first = ("A".."I").to_a
-second = ("A".."I").to_a
-tile_names = []
+require_relative "./board.rb"
+require_relative "./tile.rb"
 
-first.each do |firstletter|
-  second.each do |secondletter|
-    tile_names << "#{firstletter}#{secondletter}"
+class Game
+
+  attr_accessor :board
+
+  def initialize
+    @board = Board.new
   end
+
+  def play
+    setup
+  end
+
+  def display
+    @board.render
+  end
+
+  def play_turn
+  end
+
+  def setup
+    @board.place_bombs
+    display
+  end
+
 end
 
-tile_hash = Hash.new
-tile_names.each { |name| tile_hash[name] = nil }
-p tile_hash
+
+
+
+if __FILE__ == $0
+  a = Game.new
+  a.play
+end

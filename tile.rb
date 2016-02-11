@@ -8,13 +8,13 @@ class Tile
   end
 
   def inspect
-    if self.bomb == false && self.flag == false
+    # if self.bomb == false && self.flag == false
       "_"
-    elsif self.flag == true
-      "F"
-    # else
-    #   "*"
-    end
+    # elsif self.flag == true
+    #   "F"
+    # # else
+    # #   "*"
+    # end
 
 
   end

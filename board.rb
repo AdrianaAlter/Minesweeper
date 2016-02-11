@@ -13,12 +13,6 @@ class Board
     @grid[x][y]
   end
 
-  # def random_position
-  #   row = (0..9).to_a.sample
-  #   column = (0..9).to_a.sample
-  #   [row, column]
-  # end
-  #
   def []=(pos, val)
     x, y = pos
     @grid[x][y] = val
@@ -41,7 +35,7 @@ class Board
           bomb_count += 1
         end
       end
-      p bomb_count
+
   end
 
 end
@@ -53,5 +47,5 @@ end
 if __FILE__ == $0
   b = Board.new
   b.place_bombs
-  b.render 
+  b.render
 end
