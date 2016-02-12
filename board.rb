@@ -20,7 +20,9 @@ class Board
   end
 
   def render
-    @grid.each {|row| puts "#{row}" }
+    header = "    0, 1, 2, 3, 4, 5, 6, 7, 8"
+    puts header
+    @grid.each_with_index { |row, idx| puts "#{idx}  #{row}" }
   end
 
 
@@ -38,6 +40,28 @@ class Board
           @bomb_positions << [x, y]
         end
       end
+
+  end
+
+  def neighboring(pos)
+    neighbors = []
+      r = pos[0]
+      c = pos[1]
+      neighbors << [r - 1, c]
+      neighbors << [r + 1, c]
+      neighbors << [r - 1, c + 1]
+      neighbors << [r, c + 1]
+      neighbors << [r + 1, c + 1]
+      neighbors << [r - 1, c - 1]
+      neighbors << [r, c - 1]
+      neighbors << [r + 1, c - 1]
+      neighbors.select { |neighbor| neighbor.first.between?(0, 8) && neighbor.last.between?(0, 8) }
+  end
+
+  def assign_values
+    @bomb_positions.each do |pos|
+      neighboring(pos).each { |tile| self[tile].value += 1 }
+    end
 
   end
 
