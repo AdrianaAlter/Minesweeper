@@ -67,10 +67,6 @@ class Board
 
 end
 
-
-# grid = Array.new(9) { Array.new(9) }
-# p grid
-
 if __FILE__ == $0
   b = Board.new
   b.place_bombs

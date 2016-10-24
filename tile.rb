@@ -19,18 +19,4 @@ class Tile
        self.value
      end
   end
-
-
-
-
-    #GAME LOST
-    # if self.bomb == true
-    #   "*"
-    # else
-    #   self.value
-    # end
-
-
-
-
 end
