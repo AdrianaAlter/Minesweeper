@@ -9,14 +9,31 @@ class Tile
   end
 
   def inspect
-     if self.revealed == false && self.flag == false
-       "_"
-     elsif self.flag == true
-       "F"
-     elsif self.bomb == true && self.revealed == true
-       "*"
-     elsif self.bomb == false && self.revealed == true
-       self.value
+     if self.dormant?
+       "■"
+     elsif self.flagged?
+       "⚑"
+     elsif self.bombed?
+       "✹"
+     elsif self.flipped?
+       self.value.to_s
      end
   end
+
+  def dormant?
+    !self.revealed && !self.flag
+  end
+
+  def flagged?
+    self.flag
+  end
+
+  def bombed?
+    self.bomb && self.revealed
+  end
+
+  def flipped?
+    !self.bomb && self.revealed
+  end
+
 end
